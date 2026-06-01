@@ -1,0 +1,48 @@
+# ruff.toml
+
+# Line length
+line-length = 88
+
+[lint]
+# Rules to enable
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "I",   # isort
+    "B",   # flake8-bugbear
+    "C4",  # flake8-comprehensions
+    "UP",  # pyupgrade
+    "N",   # pep8-naming
+    "PD",  # pandas-vet
+]
+
+# Rules to ignore
+ignore = [
+    "E501",  # line too long (handled by formatter)
+    "B008",  # do not perform function calls in default arguments
+]
+
+# Allow autofix for all enabled rules
+fixable = ["ALL"]
+unfixable = []
+
+# Exclude paths
+exclude = [
+    ".venv",
+    ".git",
+    "__pycache__",
+    "dist",
+    "build",
+]
+
+[lint.isort]
+known-first-party = ["src"]
+
+[lint.per-file-ignores]
+"tests/*" = ["S101"]  # allow assert in tests
+
+[format]
+quote-style = "double"
+indent-style = "space"
+docstring-code-format = true
